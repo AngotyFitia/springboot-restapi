@@ -9,13 +9,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
+import mg.tpspring.restapi.dto.ProductDTO;
 import mg.tpspring.restapi.model.Product;
 import mg.tpspring.restapi.service.ProductService;
 
 @RestController
 @RequestMapping("/api/products")
 public class ProductController {
-    
+
     @Autowired
     private ProductService service;
 
@@ -30,7 +32,8 @@ public class ProductController {
     }
 
     @PostMapping
-    public Product create(@RequestBody Product product){
-        return service.save(product);
+    public ProductDTO create(@Valid @RequestBody ProductDTO dto) {
+        return service.save(dto);
     }
+
 }
