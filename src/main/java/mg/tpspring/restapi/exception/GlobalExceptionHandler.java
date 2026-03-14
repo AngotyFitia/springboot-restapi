@@ -22,6 +22,6 @@ public class GlobalExceptionHandler {
     // Gestion générique des autres erreurs
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleError(Exception e) {
-        return ResponseEntity.status(500).body("Server Error");
+        return ResponseEntity.status(500).body(e.getMessage());
     }
 }

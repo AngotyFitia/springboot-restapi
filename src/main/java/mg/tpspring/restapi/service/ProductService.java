@@ -21,24 +21,13 @@ public class ProductService {
         return repository.findById(id).orElseThrow();
     }
     
-    public ProductDTO save(ProductDTO dto){
-        
-        // Convert DTO -> Entity
+    public Product save(ProductDTO dto){
         Product product = new Product();
         product.setName(dto.getName());
         product.setPrice(dto.getPrice());
-
-        // Save entity
-        Product saved = repository.save(product);
-
-        // Convert Entity -> DTO
-        ProductDTO result = new ProductDTO();
-        result.setId(saved.getId());
-        result.setName(saved.getName());
-        result.setPrice(saved.getPrice());
-
-        return result;
+        return repository.save(product);
     }
+       
 }
 
 
